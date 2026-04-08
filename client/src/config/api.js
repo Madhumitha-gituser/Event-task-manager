@@ -1,19 +1,14 @@
-/** Use Render backend URL in production, or local proxy in development */
+/** Production API URL - hardcoded for Netlify deployment */
+const PRODUCTION_API_URL = 'https://event-task-manager-p2i7.onrender.com/api';
+
 export function getApiBase() {
-  const raw = import.meta.env.VITE_API_BASE;
-  
-  // If explicitly set via env var, use it
-  if (raw && raw !== '') {
-    return String(raw).replace(/\/$/, '');
-  }
-  
-  // In development (localhost), use relative path for proxy
-  if (window.location.hostname === 'localhost') {
+  // If on localhost (development), use relative path for Vite proxy
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
     return '';
   }
   
-  // In production, use Render backend URL
-  return 'https://event-task-manager-p2i7.onrender.com/api';
+  // For all other environments (production), use full Render URL
+  return PRODUCTION_API_URL;
 }
 
 export function apiUrl(path) {
