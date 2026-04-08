@@ -1,0 +1,33 @@
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-main-content {
+  flex: 1;
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .app-main-content {
+    margin-left: 72px;
+    width: calc(100% - 72px);
+  }
+  .dark-mode {
+  background-color: #121212;
+  color: white;
+}
+.dark-mode .app-main-content {
+  background-color: #1e1e1e;
+}
+}
+.app-layout {
+  min-height: 100vh;
+  background-color: inherit;
+}
+
+.app-main-content {
+  background-color: inherit;
+}

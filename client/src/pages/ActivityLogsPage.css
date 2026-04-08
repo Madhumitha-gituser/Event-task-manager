@@ -1,0 +1,147 @@
+.activity-logs-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 20%, #f093fb 50%, #f5576c 80%, #ff9a56 100%);
+  background-attachment: fixed;
+}
+
+.activity-logs-page__main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.activity-logs-page__header {
+  margin-bottom: 2rem;
+}
+
+.activity-logs-page__title {
+  margin: 0 0 0.5rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.activity-logs-page__subtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  max-width: 42rem;
+}
+
+.activity-logs-page__error {
+  background: #fee;
+  color: #c33;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+  border-left: 4px solid #c33;
+  font-weight: 600;
+}
+
+.activity-logs-page__loading {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #718096;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+}
+
+.activity-logs-page__empty {
+  padding: 2rem;
+  text-align: center;
+  color: #718096;
+
+  background: #ffffff;  
+  border-radius: 12px;   
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); 
+}
+
+.activity-logs-page__empty p {
+  margin: 0 0 1.25rem;
+}
+
+.activity-logs-page__cta {
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  cursor: pointer;
+}
+
+.activity-logs-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  background: #ffffff;   
+  padding: 1.5rem;       
+  border-radius: 16px;   
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.activity-logs-page__event-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.activity-logs-page__event-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.activity-logs-page__event-title {
+  margin: 0;
+  color: white;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.activity-logs-page__manage {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.activity-logs-page__manage:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: white;
+}
+
+@media (max-width: 768px) {
+  .activity-logs-page__main {
+    padding: 1.5rem 1rem 2.5rem;
+  }
+
+  .activity-logs-page__title {
+    font-size: 1.65rem;
+  }
+}
+.activity-logs-page__empty {
+  background: #ffffff !important;
+  color: #718096;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.activity-logs-page__list {
+  background: white !important;
+}
+
+.activity-logs-page__cta {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+}

@@ -1,0 +1,120 @@
+.activity-log__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.activity-log__head .event-details-section-title {
+  margin-bottom: 0;
+}
+
+.activity-log__clear {
+  padding: 0.45rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle, #e2e8f0);
+  background: var(--surface-muted, #f7fafc);
+  color: var(--text-primary, #4a5568);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.activity-log__clear:hover:not(:disabled) {
+  border-color: #c53030;
+  color: #c53030;
+}
+
+.activity-log__clear:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.activity-log__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.activity-log__item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  padding: 0.65rem 0.75rem;
+  background: var(--surface-muted, #f7fafc);
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle, #e2e8f0);
+}
+
+[data-theme='dark'] .activity-log__item {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.activity-log__content {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 0.5rem 0.75rem;
+  align-items: baseline;
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-log__time {
+  font-weight: 600;
+  color: var(--text-muted, #718096);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.activity-log__who {
+  font-weight: 700;
+  color: var(--accent, #667eea);
+  white-space: nowrap;
+}
+
+.activity-log__text {
+  color: var(--text-primary, #2d3748);
+  grid-column: 1 / -1;
+  word-break: break-word;
+}
+
+.activity-log__remove {
+  flex-shrink: 0;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #feb2b2;
+  background: #fff5f5;
+  color: #c53030;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.activity-log__remove:hover:not(:disabled) {
+  background: #fed7d7;
+}
+
+.activity-log__remove:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (min-width: 640px) {
+  .activity-log__content {
+    grid-template-columns: minmax(100px, auto) minmax(80px, auto) 1fr;
+  }
+
+  .activity-log__text {
+    grid-column: auto;
+  }
+}

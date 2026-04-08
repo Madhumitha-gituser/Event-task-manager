@@ -1,0 +1,45 @@
+export const CATEGORIES = {
+  Technical: [
+    'Hackathon',
+    'Coding Contest',
+    'Debugging Competition',
+    'Project Expo',
+    'Tech Quiz',
+    'Workshop',
+    'Seminar',
+    'Webinar',
+  ],
+  Cultural: [
+    'Dance Competition',
+    'Singing Competition',
+    'Drama / Skit',
+    'Fashion Show',
+    'Art Exhibition',
+    'Photography Contest',
+    'Talent Show',
+  ],
+  Sports: [
+    'Cricket',
+    'Football',
+    'Volleyball',
+    'Basketball',
+    'Athletics',
+    'Indoor Games',
+  ],
+  Others: [
+    'Guest Lecture',
+    'Training Session',
+    'Orientation Program',
+    'Club Activity',
+    'Fest',
+    'Farewell',
+    'Freshers',
+    'Awareness Program',
+    'Alumni Meet',
+    'Startup Pitch',
+    'Volunteer Event',
+    'Networking Event',
+  ],
+};
+
+export const CATEGORY_LIST = Object.keys(CATEGORIES);
