@@ -1,25 +1,25 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CATEGORIES, CATEGORY_LIST } from '../constants/eventCategories';
-import { apiUrl } from '../config/api';
-import './CreateEvent.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CATEGORIES, CATEGORY_LIST } from "../constants/eventCategories";
+import { apiUrl } from "../config/api";
+import "./CreateEvent.css";
 
 export default function CreateEvent() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  
+  const [error, setError] = useState("");
+
   const [form, setForm] = useState({
-    category: '',
-    type: '',
-    date: '',
-    time: '',
-    title: '',
-    description: '',
-    venue: '',
-    organizer: '',
-    max_participants: '',
-    registration_link: '',
+    category: "",
+    type: "",
+    date: "",
+    time: "",
+    title: "",
+    description: "",
+    venue: "",
+    organizer: "",
+    max_participants: "",
+    registration_link: "",
   });
 
   const eventTypes = form.category ? CATEGORIES[form.category] || [] : [];
@@ -29,7 +29,7 @@ export default function CreateEvent() {
     setForm((prev) => ({
       ...prev,
       category: newCategory,
-      type: '',
+      type: "",
     }));
   };
 
@@ -43,17 +43,18 @@ export default function CreateEvent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
-      const token = localStorage.getItem('event_task_manager_token');
+      const token = localStorage.getItem("event_task_manager_token");
 
-      const response = await fetch(apiUrl('/api/events'), {
-        method: 'POST',
+      // FIXED: Removed duplicate '/api' - apiUrl already adds it
+      const response = await fetch(apiUrl("/events"), {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           category: form.category,
@@ -71,19 +72,19 @@ export default function CreateEvent() {
 
       if (!response.ok) {
         const data = await response.json();
-        throw new Error(data.error || 'Failed to create event');
+        throw new Error(data.error || "Failed to create event");
       }
 
       const data = await response.json();
       const newId = data.event?.id;
       if (newId != null) {
-        navigate(`/events/${newId}`, { state: { from: '/create-event' } });
+        navigate(`/events/${newId}`, { state: { from: "/create-event" } });
       } else {
-        navigate('/dashboard');
+        navigate("/dashboard");
       }
     } catch (err) {
-      setError(err.message || 'Failed to create event');
-      console.error('Error creating event:', err);
+      setError(err.message || "Failed to create event");
+      console.error("Error creating event:", err);
     } finally {
       setLoading(false);
     }
@@ -128,7 +129,9 @@ export default function CreateEvent() {
                 required
                 disabled={!form.category}
               >
-                <option value="">{form.category ? 'Select type' : 'Choose a category first'}</option>
+                <option value="">
+                  {form.category ? "Select type" : "Choose a category first"}
+                </option>
                 {eventTypes.map((type) => (
                   <option key={type} value={type}>
                     {type}
@@ -171,10 +174,12 @@ export default function CreateEvent() {
                 name="title"
                 value={form.title}
                 onChange={handleChange}
-                placeholder={`Defaults to “${form.category && form.type ? `${form.category} - ${form.type}` : 'Category - Type'}”`}
+                placeholder={`Defaults to “${form.category && form.type ? `${form.category} - ${form.type}` : "Category - Type"}”`}
                 autoComplete="off"
               />
-              <p className="create-event-hint">If empty, the title will be your category and type.</p>
+              <p className="create-event-hint">
+                If empty, the title will be your category and type.
+              </p>
             </div>
 
             <div className="form-group">
@@ -234,7 +239,9 @@ export default function CreateEvent() {
             </div>
 
             <div className="form-group">
-              <label htmlFor="registration_link">Registration link (optional)</label>
+              <label htmlFor="registration_link">
+                Registration link (optional)
+              </label>
               <input
                 type="url"
                 id="registration_link"
@@ -247,14 +254,18 @@ export default function CreateEvent() {
             </div>
 
             {/* Submit Button */}
-            <button type="submit" disabled={loading} className="create-event-submit">
-              {loading ? 'Creating...' : 'Create Event'}
+            <button
+              type="submit"
+              disabled={loading}
+              className="create-event-submit"
+            >
+              {loading ? "Creating..." : "Create Event"}
             </button>
 
             {/* Cancel Button */}
             <button
               type="button"
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate("/dashboard")}
               className="create-event-cancel"
             >
               Cancel
