@@ -1,0 +1,13 @@
+[build]
+  base = "client"
+  command = "npm install && npm run build"
+  publish = "client/dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_VERSION = "10"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
