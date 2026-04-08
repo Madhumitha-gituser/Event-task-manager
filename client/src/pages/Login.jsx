@@ -1,38 +1,41 @@
-import { useState } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import Logo from '../components/Logo';
-import './Login.css';
+import { useState } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import Logo from "../components/Logo";
+import "./Login.css";
+
+// Use your Render backend URL
+const API_BASE = "https://event-task-manager-p2i7.onrender.com/api";
 
 export default function Login() {
   const { login, token } = useAuth();
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   if (token) return <Navigate to="/dashboard" replace />;
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setError('');
+    setError("");
     setSubmitting(true);
     try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch(`${API_BASE}/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || 'Login failed');
+        setError(data.error || "Login failed");
         return;
       }
       login(data.token, data.user);
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch {
-      setError('Network error. Is the server running?');
+      setError("Network error. Is the server running?");
     } finally {
       setSubmitting(false);
     }
@@ -71,12 +74,10 @@ export default function Login() {
             />
           </label>
           <button type="submit" disabled={submitting} className="login-btn">
-            {submitting ? 'Signing in...' : 'Sign in'}
+            {submitting ? "Signing in..." : "Sign in"}
           </button>
         </form>
-        <p className="login-demo">
-          Demo: abc@vemanait.edu.in / password123
-        </p>
+        <p className="login-demo">Demo: abc@vemanait.edu.in / password123</p>
       </div>
     </div>
   );
