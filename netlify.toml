@@ -1,6 +1,6 @@
 [build]
   base = "client"
-  command = "npm ci && npx vite build"
+  command = "rm -rf dist && npm ci && npx vite build"
   publish = "dist"
 
 [build.environment]
@@ -11,3 +11,6 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[cache]
+  skip_caching = false
