@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import CreateEvent from './pages/CreateEvent';
 import ViewEvents from './pages/ViewEvents';
 import CalendarPage from './pages/CalendarPage';
+// Force rebuild - v2
 import ActivityLogsPage from './pages/ActivityLogsPage';
 import ManageEvent from './pages/ManageEvent';
 
