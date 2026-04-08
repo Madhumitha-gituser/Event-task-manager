@@ -7,8 +7,14 @@ import { authMiddleware } from './middleware/auth.js';
 
 export function createApp() {
   const app = express();
-  const clientOrigin = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
-  app.use(cors({ origin: clientOrigin, credentials: true }));
+  const clientOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    'https://event-task-manager.netlify.app',
+    process.env.CLIENT_ORIGIN
+  ].filter(Boolean);
+  
+  app.use(cors({ origin: clientOrigins, credentials: true }));
   app.use(express.json());
 
   app.use('/api/auth', authRoutes);
